@@ -2,7 +2,7 @@
 
 A personal portfolio project that turns unstructured billing-dispute messages into structured records, validates them against synthetic invoices, and prepares a queue for human review.
 
-**Status:** Under construction. This README defines the intended workflow; implementation and evaluation results will be added as they are completed.
+**Status:** Working portfolio demonstration. Includes a recorded manual ChatGPT extraction, a Python validator, and a generated human review queue. The local script replays the recorded response; it does not make live AI calls.
 
 ## Business Problem
 
@@ -85,3 +85,70 @@ The completed demonstration should let a reviewer:
 - Distinguish implemented behavior from future improvements
 
 No accuracy, time-saving, or financial-impact claims will be made without supporting measurements.
+## Run the Demonstration
+
+Requires Python 3. No external packages or API credentials are needed.
+
+Download and extract this repository, open a terminal in the extracted folder, and run:
+
+```bash
+python3 validate.py
+```
+
+The script reads the recorded extraction, checks it against the source messages and invoice register, and writes `outputs/review_queue.json`.
+
+A successful run overwrites the generated review queue. It does not modify the source messages, invoice register, or recorded model response.
+
+## Observed Results
+
+The six-message sample was run successfully on macOS.
+
+| Message | Route | Intake exceptions |
+|---|---|---|
+| MSG-001 | Standard review | None detected |
+| MSG-002 | Standard review | None detected |
+| MSG-003 | Exception review | Missing invoice, amount, and currency; unspecified issue |
+| MSG-004 | Exception review | Invoice not found |
+| MSG-005 | Exception review | Disputed amount exceeds invoice total |
+| MSG-006 | Exception review | Missing disputed amount; ambiguous charge |
+
+All six recorded responses passed the implemented structural and evidence checks. Two cases entered standard review and four entered exception review.
+
+These counts describe this sample run. They are not a measurement of general extraction accuracy.
+
+Every case requires human review. Standard review does not mean the dispute is valid or a credit is approved.
+
+## Inspect the Evidence
+
+- [Synthetic customer messages](data/dispute_messages.json)
+- [Synthetic invoice register](data/invoices.csv)
+- [Extraction prompt and output specification](prompts/extract_dispute.md)
+- [Recorded model response](outputs/model_response_v1.json)
+- [Validator](validate.py)
+- [Generated review queue](outputs/review_queue.json)
+- [Run provenance and limitations](docs/run-notes.md)
+
+## Validation Boundaries
+
+The validator checks:
+
+- Required output fields and supported data types
+- Unique message IDs and complete source-message coverage
+- Allowed issue categories and decimal amount formatting
+- Whether evidence excerpts appear verbatim in the source
+- Whether extracted names, invoice references, currencies, and amounts appear in their evidence
+- Invoice existence, customer matching, currency matching, and amounts exceeding invoice totals
+
+An excerpt appearing in a message does not prove that it supports the extracted meaning. Human review must assess context, ambiguity, and whether the allegation is correct.
+
+The invoice register contains totals, not line items or return records. It cannot establish whether a storage charge was duplicated or a rental duration was incorrect.
+
+## Current Limitations
+
+- Extraction was performed manually in ChatGPT; API automation is not implemented.
+- The recorded response is replayed locally for reproducible validation.
+- Six synthetic messages are insufficient to establish production reliability.
+- Category meanings and review-note completeness are not automatically verified.
+- One embedded-instruction example does not establish broad resistance to prompt injection.
+- Malformed-output rejection paths have not yet been exercised with deliberate test cases.
+- No measured time savings, financial impact, or production deployment is claimed.
