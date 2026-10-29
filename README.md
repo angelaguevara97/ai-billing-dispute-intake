@@ -127,6 +127,7 @@ Every case requires human review. Standard review does not mean the dispute is v
 - [Validator](validate.py)
 - [Generated review queue](outputs/review_queue.json)
 - [Run provenance and limitations](docs/run-notes.md)
+- [Extraction evaluation and business exception analysis](docs/evaluation.md)
 
 ## Validation Boundaries
 
