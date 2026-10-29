@@ -27,7 +27,7 @@ The workflow prepares cases for review. It does not approve credits, change invo
 
 **Synthetic input:**
 
-> Hi, invoice INV-1001 for Harbor Demo Logistics includes a $150 storage charge we think was added twice. Please check it.
+> Hi, invoice INV-1001 for Harbor Demo Logistics includes a $150 USD storage charge we think was added twice. Please check it.
 
 **Intended extraction:**
 
