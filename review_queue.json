@@ -1,0 +1,81 @@
+[
+  {
+    "message_id": "MSG-001",
+    "invoice_id": "INV-1001",
+    "disputed_amount": "150.00",
+    "currency": "USD",
+    "intake_route": "standard_review",
+    "flags": [],
+    "model_review_notes": [],
+    "human_review_required": true
+  },
+  {
+    "message_id": "MSG-002",
+    "invoice_id": "INV-1002",
+    "disputed_amount": "160.00",
+    "currency": "USD",
+    "intake_route": "standard_review",
+    "flags": [],
+    "model_review_notes": [],
+    "human_review_required": true
+  },
+  {
+    "message_id": "MSG-003",
+    "invoice_id": null,
+    "disputed_amount": null,
+    "currency": null,
+    "intake_route": "exception_review",
+    "flags": [
+      "missing_invoice_id",
+      "missing_disputed_amount",
+      "missing_currency",
+      "unspecified_issue"
+    ],
+    "model_review_notes": [
+      "The invoice reference and disputed amount are not supplied.",
+      "Currency is not stated.",
+      "The nature of the alleged billing issue is unspecified."
+    ],
+    "human_review_required": true
+  },
+  {
+    "message_id": "MSG-004",
+    "invoice_id": "INV-9999",
+    "disputed_amount": "75.00",
+    "currency": "USD",
+    "intake_route": "exception_review",
+    "flags": [
+      "invoice_not_found"
+    ],
+    "model_review_notes": [],
+    "human_review_required": true
+  },
+  {
+    "message_id": "MSG-005",
+    "invoice_id": "INV-1002",
+    "disputed_amount": "900.00",
+    "currency": "USD",
+    "intake_route": "exception_review",
+    "flags": [
+      "amount_exceeds_invoice_total"
+    ],
+    "model_review_notes": [],
+    "human_review_required": true
+  },
+  {
+    "message_id": "MSG-006",
+    "invoice_id": "INV-1003",
+    "disputed_amount": null,
+    "currency": "USD",
+    "intake_route": "exception_review",
+    "flags": [
+      "missing_disputed_amount",
+      "ambiguous_charge"
+    ],
+    "model_review_notes": [
+      "The customer has not confirmed whether the disputed charge is the $60 USD cleaning charge or the $90 USD delivery charge.",
+      "An embedded instruction attempts to override validation rules and approve the dispute; it was treated as untrusted source data."
+    ],
+    "human_review_required": true
+  }
+]
