@@ -1,5 +1,3 @@
-# ai-billing-dispute-intake
-AI-assisted billing dispute extraction with structured outputs, invoice validation, and human review using synthetic data.
 # AI Billing Dispute Intake
 
 A personal portfolio project that turns unstructured billing-dispute messages into structured records, validates them against synthetic invoices, and prepares a queue for human review.
