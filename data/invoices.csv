@@ -1,0 +1,4 @@
+invoice_id,customer_name,currency,invoice_total
+INV-1001,Harbor Demo Logistics,USD,750.00
+INV-1002,Cedar Sample Transport,USD,400.00
+INV-1003,Beacon Fictional Freight,USD,600.00
