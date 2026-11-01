@@ -151,5 +151,5 @@ The invoice register contains totals, not line items or return records. It canno
 - Six synthetic messages are insufficient to establish production reliability.
 - Category meanings and review-note completeness are not automatically verified.
 - One embedded-instruction example does not establish broad resistance to prompt injection.
-- - One deliberate validation test changed MSG-001's extracted amount to "999.00" while preserving its original $150 USD evidence. The validator rejected it with "Amount is not supported by its evidence." Other malformed-output scenarios remain untested.
+- One deliberate validation test changed MSG-001's extracted amount to "999.00" while preserving its original $150 USD evidence. The validator rejected it with "Amount is not supported by its evidence." Other malformed-output scenarios remain untested.
 - No measured time savings, financial impact, or production deployment is claimed.
